@@ -20,8 +20,20 @@ insert into ventas (fecha, cantidad, cliente_id, producto_id)
     ('2026-03-08', 3, 2, 2),
     ('2026-03-09', 1, 3, 4)
 ;
+--###############
+--## CONSULTAS ##
+--###############
 
--- CONSULTAS --
+--Ventas Generales: Mostrar id_venta, fecha y nombre_cliente.
+
+select v.id_venta, v.fecha, c.nombre_cliente
+from ventas v
+join clientes c on c.id_cliente = v.cliente_id
+order by v.id_venta
+;
+
+-- **Detalle de Venta:** Mostrar id_venta, nombre_cliente, nombre_producto, cantidad, precio_producto y el **Subtotal** (cantidad × precio).
+
 
 
 
