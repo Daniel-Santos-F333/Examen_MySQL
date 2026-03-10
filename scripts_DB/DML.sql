@@ -47,3 +47,13 @@ JOIN clientes c ON v.cliente_id = c.id_cliente
 ORDER BY v.id_venta
 ;
 
+-- Reporte de Gastos: Mostrar nombre_cliente y el __Total Gastado__ (suma de todos sus subtotales). Ordenar de mayor a menor gasto.
+
+SELECT 
+    c.nombre_cliente, 
+    SUM(v.cantidad * p.precio) AS total_gastado
+FROM clientes c
+JOIN ventas v ON c.id_cliente = v.cliente_id
+JOIN productos p ON v.producto_id = p.id_producto
+GROUP BY c.id_cliente, c.nombre_cliente
+ORDER BY total_gastado DESC;
