@@ -34,7 +34,16 @@ order by v.id_venta
 
 -- **Detalle de Venta:** Mostrar id_venta, nombre_cliente, nombre_producto, cantidad, precio_producto y el **Subtotal** (cantidad × precio).
 
-
-
-
+SELECT
+    v.id_venta,
+    c.nombre_cliente,
+    p.nombre_producto,
+    v.cantidad,
+    p.precio_producto,
+    (p.precio_producto * v.cantidad) AS subtotal
+FROM ventas v
+JOIN productos p ON v.producto_id = p.id_producto
+JOIN clientes c ON v.cliente_id = c.id_cliente
+ORDER BY v.id_venta
+;
 
